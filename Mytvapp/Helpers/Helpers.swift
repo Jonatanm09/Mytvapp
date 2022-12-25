@@ -16,3 +16,17 @@ func displayAlert(withTitle title: String, message: String, controller: UIViewCo
 }
 
 
+
+func showSimpleAlert( controller: UIViewController, handler: ((UIAlertAction) -> Void)? = nil) {
+    let alert = UIAlertController(title: "Log out?", message: "Está seguro que desea salir de sesión?",         preferredStyle: UIAlertController.Style.alert)
+
+    alert.addAction(UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.default, handler: { _ in
+        //Cancel Action
+    }))
+    alert.addAction(UIAlertAction(title: "Log out",
+                                  style: UIAlertAction.Style.default,
+                                  handler: handler))
+    controller.present(alert, animated: true, completion: nil)
+}
+
+

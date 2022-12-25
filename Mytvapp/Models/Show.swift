@@ -14,7 +14,6 @@ struct Show: Decodable {
     let photo : String
     let description : String
 
-    
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case title = "original_name"

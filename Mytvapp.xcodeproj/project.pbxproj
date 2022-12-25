@@ -16,6 +16,7 @@
 		D45F491C29568BEA00D4B4AF /* ShowDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F491B29568BEA00D4B4AF /* ShowDetail.swift */; };
 		D45F491E2956A2E500D4B4AF /* TvShowDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F491D2956A2E500D4B4AF /* TvShowDetailsViewController.swift */; };
 		D45F49202956A6AA00D4B4AF /* CustomTvShowDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F491F2956A6AA00D4B4AF /* CustomTvShowDetailsCollectionViewCell.swift */; };
+		D45F49222958FDEB00D4B4AF /* ImgTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F49212958FDEB00D4B4AF /* ImgTypes.swift */; };
 		D48261AE29520CB600F9DFAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48261AD29520CB600F9DFAA /* AppDelegate.swift */; };
 		D48261B029520CB600F9DFAA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48261AF29520CB600F9DFAA /* SceneDelegate.swift */; };
 		D48261B229520CB600F9DFAA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48261B129520CB600F9DFAA /* ViewController.swift */; };
@@ -66,6 +67,7 @@
 		D45F491B29568BEA00D4B4AF /* ShowDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetail.swift; sourceTree = "<group>"; };
 		D45F491D2956A2E500D4B4AF /* TvShowDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvShowDetailsViewController.swift; sourceTree = "<group>"; };
 		D45F491F2956A6AA00D4B4AF /* CustomTvShowDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTvShowDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
+		D45F49212958FDEB00D4B4AF /* ImgTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgTypes.swift; sourceTree = "<group>"; };
 		D48261AA29520CB600F9DFAA /* Mytvapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mytvapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D48261AD29520CB600F9DFAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D48261AF29520CB600F9DFAA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				D48261EC2953710300F9DFAA /* Shows.swift */,
 				D45F491929555E3100D4B4AF /* Token.swift */,
 				D45F491B29568BEA00D4B4AF /* ShowDetail.swift */,
+				D45F49212958FDEB00D4B4AF /* ImgTypes.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 				D48261ED2953710300F9DFAA /* Shows.swift in Sources */,
 				D48261E42952159D00F9DFAA /* Helpers.swift in Sources */,
 				D48261EB29536FA600F9DFAA /* Show.swift in Sources */,
+				D45F49222958FDEB00D4B4AF /* ImgTypes.swift in Sources */,
 				D45F491E2956A2E500D4B4AF /* TvShowDetailsViewController.swift in Sources */,
 				D45F491A29555E3100D4B4AF /* Token.swift in Sources */,
 				D48261B029520CB600F9DFAA /* SceneDelegate.swift in Sources */,

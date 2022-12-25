@@ -24,8 +24,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         setButtonEnable(isEnable: false)
         getRequestToken()
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
+    
     
     @IBAction func loginBtnPressed(_ sender: Any) {
         self.indicatorLogin.startAnimating()
@@ -36,13 +36,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             login(userName: userTexfield.text!, password: userPasswordField.text!) { User in
                 self.performSegue(withIdentifier: self.tvShowSegue, sender: self)
-            } failure: { Error in
-                displayAlert(withTitle: "Error", message: "Hubo un error inesperado", controller: self)
-                self.indicatorLogin.stopAnimating()
+                self.userTexfield.text = ""
+                self.userPasswordField.text = ""
+            } failure: { error in
+                displayAlert(withTitle: "Error", message: error, controller: self)
             }
+            self.indicatorLogin.stopAnimating()
             setButtonEnable(isEnable: true)
         } else {
-            displayAlert(withTitle: "Error", message: "Hubo un error inesperado", controller: self)
+            displayAlert(withTitle: "Error", message: "El usuario o contraseña no pueden tener espacios en blancos o estar vacios", controller: self)
             self.indicatorLogin.stopAnimating()
             setButtonEnable(isEnable: true)
         }

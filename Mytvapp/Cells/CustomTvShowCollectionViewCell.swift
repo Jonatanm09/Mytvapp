@@ -13,6 +13,7 @@ class CustomTvShowCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var descriptionLbl: UILabel!
     @IBOutlet weak var porcentajeLbl: UILabel!
+    @IBOutlet weak var imgView: UIImageView!
     
     func setLabel(title:String, date: String, porcentage: String) {
         circleView.layer.cornerRadius = circleView.layer.bounds.width / 2
