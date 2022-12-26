@@ -132,9 +132,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="H70-0Z-Z30">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="H70-0Z-Z30">
                                 <rect key="frame" x="20" y="227.5" width="374" height="634.5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Wu3-b5-dkM">
                                     <size key="itemSize" width="215" height="263"/>
@@ -156,8 +155,8 @@
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loki" translatesAutoresizingMaskIntoConstraints="NO" id="Ybf-w6-3kN">
                                                             <rect key="frame" x="0.0" y="0.0" width="215" height="225"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="180" id="Wjo-mS-mFC"/>
-                                                                <constraint firstAttribute="height" constant="213" id="mYh-MG-2ck"/>
+                                                                <constraint firstAttribute="width" constant="160" id="U1O-q7-CJQ"/>
+                                                                <constraint firstAttribute="height" constant="180" id="hic-7l-xdA"/>
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
@@ -228,11 +227,12 @@
                                                         <constraint firstItem="inf-2e-Qvm" firstAttribute="leading" secondItem="vr1-kG-Gtn" secondAttribute="leading" constant="5" id="Ect-Li-zJf"/>
                                                         <constraint firstAttribute="bottom" secondItem="ENJ-CC-d8U" secondAttribute="bottom" constant="4" id="JRl-wC-ypi"/>
                                                         <constraint firstItem="ENJ-CC-d8U" firstAttribute="top" secondItem="vr1-kG-Gtn" secondAttribute="top" constant="4" id="Nvb-v1-Sis"/>
+                                                        <constraint firstAttribute="height" constant="38" id="VZM-ar-ytx"/>
                                                         <constraint firstAttribute="trailing" secondItem="ENJ-CC-d8U" secondAttribute="trailing" constant="4" id="rWe-T4-AN7"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="3Tf-aX-FSo" secondAttribute="trailing" id="5hX-qS-D4l"/>
                                                 <constraint firstItem="3Tf-aX-FSo" firstAttribute="top" secondItem="vdZ-q6-cZI" secondAttribute="top" id="ADa-kr-JZu"/>
@@ -291,10 +291,14 @@
                         <color key="backgroundColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Xs-Lc-NpL" firstAttribute="top" secondItem="BiH-bC-eMO" secondAttribute="top" constant="10" id="0lE-ri-xx7"/>
+                            <constraint firstItem="H70-0Z-Z30" firstAttribute="top" secondItem="saP-Co-j4j" secondAttribute="bottom" constant="36.5" id="7Qh-K1-tuT"/>
+                            <constraint firstItem="H70-0Z-Z30" firstAttribute="leading" secondItem="BiH-bC-eMO" secondAttribute="leading" constant="20" id="9ZE-RZ-Z2K"/>
+                            <constraint firstItem="BiH-bC-eMO" firstAttribute="trailing" secondItem="H70-0Z-Z30" secondAttribute="trailing" constant="20" id="L2V-hz-aTn"/>
                             <constraint firstItem="BiH-bC-eMO" firstAttribute="trailing" secondItem="6Xs-Lc-NpL" secondAttribute="trailing" constant="20" id="XtX-SZ-ck5"/>
                             <constraint firstItem="BiH-bC-eMO" firstAttribute="trailing" secondItem="saP-Co-j4j" secondAttribute="trailing" constant="20" id="Y5z-Hn-N38"/>
                             <constraint firstItem="6Xs-Lc-NpL" firstAttribute="leading" secondItem="BiH-bC-eMO" secondAttribute="leading" constant="20" id="bIl-6A-SQw"/>
                             <constraint firstItem="saP-Co-j4j" firstAttribute="top" secondItem="BiH-bC-eMO" secondAttribute="top" constant="69" id="dIO-wK-1ga"/>
+                            <constraint firstItem="H70-0Z-Z30" firstAttribute="bottom" secondItem="BiH-bC-eMO" secondAttribute="bottom" id="fTa-Qf-D3o"/>
                             <constraint firstItem="BiH-bC-eMO" firstAttribute="trailing" secondItem="tsF-5B-cId" secondAttribute="trailing" constant="20" id="gjv-yo-Ktk"/>
                             <constraint firstItem="tsF-5B-cId" firstAttribute="top" secondItem="saP-Co-j4j" secondAttribute="bottom" id="ojM-6q-Qtv"/>
                         </constraints>
@@ -322,7 +326,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lfp-6U-F5c">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="292"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="showDetail" translatesAutoresizingMaskIntoConstraints="NO" id="w5e-Jn-bFA">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default_Image" translatesAutoresizingMaskIntoConstraints="NO" id="w5e-Jn-bFA">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="292"/>
                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                     </imageView>
@@ -349,11 +353,11 @@
                                                     <constraint firstAttribute="width" constant="374" id="qjD-Eo-9jz"/>
                                                     <constraint firstAttribute="height" constant="50" id="wY7-0G-Bo1"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name="NotoSansOriya-Bold" family="Noto Sans Oriya" pointSize="14"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXs-5e-IbF">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="gXs-5e-IbF">
                                                 <rect key="frame" x="0.0" y="50" width="374" height="93.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="374" id="9Jp-Jj-4pt"/>
@@ -362,17 +366,17 @@
 a Victorian fantasy world, where the city's uneasy peace
 collapses when a string of murders reveals an unimaginable
 monster.</string>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="NotoSansOriya" family="Noto Sans Oriya" pointSize="12"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Creadores: Travis Beacham • René Echevarria" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qhm-zV-nwL">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Creadores: Travis Beacham • René Echevarria" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="qhm-zV-nwL">
                                                 <rect key="frame" x="0.0" y="143.5" width="374" height="20.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20.5" id="Nei-IQ-YjN"/>
                                                     <constraint firstAttribute="width" constant="374" id="uhr-fD-2os"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="NotoSansOriya" family="Noto Sans Oriya" pointSize="10"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -429,13 +433,13 @@ monster.</string>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2oG-0g-TJy">
-                                <rect key="frame" x="20" y="606" width="35" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="20" y="606" width="39.5" height="25.5"/>
+                                <fontDescription key="fontDescription" name="NotoSansOriya-Bold" family="Noto Sans Oriya" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="z7p-Ww-J7O">
-                                <rect key="frame" x="20" y="626.5" width="374" height="198.5"/>
+                                <rect key="frame" x="20" y="631.5" width="374" height="193.5"/>
                                 <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eii-4h-6Er">
                                     <size key="itemSize" width="107" height="158"/>
@@ -445,7 +449,7 @@ monster.</string>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="showDetailCell" id="ErK-hG-jTC" customClass="CustomTvShowDetailsCollectionViewCell" customModule="Mytvapp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="20.5" width="107" height="158"/>
+                                        <rect key="frame" x="0.0" y="18" width="107" height="158"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="DXO-sD-ymI">
                                             <rect key="frame" x="0.0" y="0.0" width="107" height="158"/>
@@ -454,7 +458,7 @@ monster.</string>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rky-pc-mSe">
                                                     <rect key="frame" x="13" y="8" width="81" height="97"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loki" translatesAutoresizingMaskIntoConstraints="NO" id="yY3-02-40F">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="yY3-02-40F">
                                                             <rect key="frame" x="0.0" y="0.0" width="81" height="97"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="97" id="UKz-9I-AKY"/>
@@ -471,13 +475,13 @@ monster.</string>
                                                         <constraint firstAttribute="width" constant="79" id="hvI-id-JdA"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lucifer Morningstar / Michael" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ye7-3J-wfp">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lucifer Morningstar / Michael" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ye7-3J-wfp">
                                                     <rect key="frame" x="10" y="130" width="87" height="28"/>
                                                     <fontDescription key="fontDescription" name="NotoSansOriya" family="Noto Sans Oriya" pointSize="10"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tom Ellis" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sf1-3T-2Ol">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tom Ellis" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="sf1-3T-2Ol">
                                                     <rect key="frame" x="0.0" y="110" width="107" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="rPX-6N-SWo"/>
@@ -510,7 +514,7 @@ monster.</string>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="hgW-IR-nzy">
-                                        <rect key="frame" x="117" y="20.5" width="107" height="158"/>
+                                        <rect key="frame" x="117" y="18" width="107" height="158"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="r4a-mX-OEs">
                                             <rect key="frame" x="0.0" y="0.0" width="107" height="158"/>
@@ -519,7 +523,7 @@ monster.</string>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ks-qY-NK4">
                                                     <rect key="frame" x="13" y="8" width="81" height="97"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loki" translatesAutoresizingMaskIntoConstraints="NO" id="N7k-vp-IJK">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="N7k-vp-IJK">
                                                             <rect key="frame" x="0.0" y="0.0" width="81" height="97"/>
                                                         </imageView>
                                                     </subviews>
@@ -561,7 +565,7 @@ monster.</string>
                                         <size key="customSize" width="107" height="158"/>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="jvr-2f-1WG">
-                                        <rect key="frame" x="234" y="20.5" width="107" height="158"/>
+                                        <rect key="frame" x="234" y="18" width="107" height="158"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="pTD-wK-7xa">
                                             <rect key="frame" x="0.0" y="0.0" width="107" height="158"/>
@@ -612,7 +616,7 @@ monster.</string>
                                         <size key="customSize" width="107" height="158"/>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Dk3-Ue-c0L">
-                                        <rect key="frame" x="351" y="20.5" width="107" height="158"/>
+                                        <rect key="frame" x="351" y="18" width="107" height="158"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="e49-F9-oAE">
                                             <rect key="frame" x="0.0" y="0.0" width="107" height="158"/>
@@ -720,9 +724,10 @@ monster.</string>
         </scene>
     </scenes>
     <resources>
+        <image name="Default_Image" width="493" height="391"/>
+        <image name="avatar" width="640" height="640"/>
         <image name="fondo" width="612" height="309"/>
         <image name="loki" width="1355" height="1985"/>
-        <image name="showDetail" width="687" height="522"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

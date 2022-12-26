@@ -119,23 +119,25 @@ func login(userName: String, password: String, success:@escaping (Token) -> Void
 func getImages(imageUrlPath: String, imgType: ImgTypes, img:@escaping (UIImage) -> Void) {
     
     var url = ""
-    
-    switch imgType {
-    case .small:
-        url = faceUrl + imageUrlPath
-    case .medium:
-        url = imageUrl + imageUrlPath
-    case .large:
-        url = headerImgUrl + imageUrlPath
-    }
-    AF.request( url, method: .get, parameters: queryParams).response { response in
-        
-        switch response.result {
-        case .success(let responseData):
-            img(UIImage(data: responseData!, scale:1)!)
+    if imageUrlPath != "" {
+        switch imgType {
+        case .small:
+            url = faceUrl + imageUrlPath
+        case .medium:
+            url = imageUrl + imageUrlPath
+        case .large:
+            url = headerImgUrl + imageUrlPath
+        }
+        AF.request( url, method: .get, parameters: queryParams).response { response in
             
-        case .failure(_):
-            img(UIImage(named: "loki")!)
+            switch response.result {
+            case .success(let responseData):
+                img(UIImage(data: responseData!, scale:1)!)
+                
+            case .failure(_):
+                img(UIImage(named: "loki")!)
+            }
         }
     }
+    
 }

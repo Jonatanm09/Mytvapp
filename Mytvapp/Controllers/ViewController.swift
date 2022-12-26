@@ -33,16 +33,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if !userTexfield.text!.isEmpty  && !userPasswordField.text!.isEmpty && !userTexfield.text!.hasPrefix(" ") && !userTexfield.text!.hasSuffix(" ")  {
             user?.userName = userTexfield.text!
             user?.password = userPasswordField.text!
+            self.setButtonEnable(isEnable: false)
             
             login(userName: userTexfield.text!, password: userPasswordField.text!) { User in
                 self.performSegue(withIdentifier: self.tvShowSegue, sender: self)
                 self.userTexfield.text = ""
                 self.userPasswordField.text = ""
+                self.indicatorLogin.stopAnimating()
             } failure: { error in
                 displayAlert(withTitle: "Error", message: error, controller: self)
+                self.indicatorLogin.stopAnimating()
+                self.setButtonEnable(isEnable: true)
             }
-            self.indicatorLogin.stopAnimating()
-            setButtonEnable(isEnable: true)
         } else {
             displayAlert(withTitle: "Error", message: "El usuario o contraseña no pueden tener espacios en blancos o estar vacios", controller: self)
             self.indicatorLogin.stopAnimating()

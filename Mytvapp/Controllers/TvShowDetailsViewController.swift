@@ -43,8 +43,7 @@ class TvShowDetailsViewController: UIViewController {
         getCredits(withId: showID) { cast in
             self.castArray = cast.cast
             self.showDetailCollectionView.reloadData()
-        } failure: { error in
-            print("")
+        } failure: { _ in
         }
         
         
@@ -60,31 +59,43 @@ class TvShowDetailsViewController: UIViewController {
     }
     
     func setValues (show: ShowDetail){
-        setPostImg(imgUrl: show.photo!, imgType: ImgTypes.large)
+        setPostImg(imgUrl: show.photo ?? "", imgType: ImgTypes.large)
         showLbl.text = show.name
-        showDetailLbl.text = show.overview
+        showDetailLbl.text = show.overview!.isEmpty ? "N/A" : show.overview
         seasonLbl.text = "Temporada: \(show.seasons!.last!.seasonNumber!)"
         let subString = show.airDate!.prefix(4)
         epsoidesLbk.text = subString + " | \(show.seasons!.last!.episodseCount!) episodios"
+        creatorLbl.text = show.creators?.count != 0 ? creatorString(creator: show.creators!) : "N/A"
+        
+    }
+    
+    func creatorString(creator: [Creators]) -> String {
+        var creatorString = ""
+        for creatorName in creator {
+           creatorString +=   " • " + creatorName.name!
+        }
+        return "Creadores: " + creatorString.suffix(creatorString.count - 2 )
     }
     
 }
 
 extension TvShowDetailsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.castArray?.count ?? 0
+        return self.castArray?.count ?? 1
         
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath as IndexPath) as! CustomTvShowDetailsCollectionViewCell
-        let cast =  castArray[indexPath.row]
-        if cast != nil {
-            getImages(imageUrlPath: cast.profilePhoto!, imgType: ImgTypes.small) { img in
+        if castArray == nil {
+            cell.setDataValues(castName: "N/A", castSubtitle: "N/A")
+        } else{
+            let cast =  castArray[indexPath.row]
+            getImages(imageUrlPath: cast.profilePhoto ?? "", imgType: ImgTypes.small) { img in
                 cell.castImgView.image = img
             }
+            cell.setDataValues(castName: cast.name ?? "N/A", castSubtitle: cast.characterName ?? "N/A")
         }
-        cell.setDataValues(castName: cast.name!, castSubtitle: cast.characterName!)
         return cell
     }
     
