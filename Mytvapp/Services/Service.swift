@@ -73,7 +73,7 @@ func getRequestToken() {
     let request = AF.request("https://api.themoviedb.org/3/authentication/token/new", method: .get, parameters: queryParams)
     request.responseDecodable(of: Token.self){ (response) in
         if response.error == nil {
-            Session.shared.saveToken(password:  response.value!.token!)
+            Session.shared.saveToken(token:  response.value!.token!, expires: response.value!.expires!)
         }
         if response.error != nil{
             let error : Error = response.error!
@@ -86,25 +86,24 @@ func getRequestToken() {
     
 }
 
-func login(userName: String, password: String, success:@escaping (Token) -> Void, failure:@escaping (String) -> Void) {
+func login(user: User, success:@escaping (Token) -> Void, failure:@escaping (String) -> Void) {
     
     let params = [
-        "username": userName,
-        "password": password,
-        "request_token": Session.shared.getToken(),
+        "username": user.userName,
+        "password": user.password,
+        "request_token": Session.shared.getToken().0!,
     ]
     
     
     let request = AF.request("https://api.themoviedb.org/3/authentication/token/validate_with_login?api_key=e0ce189acf3d2d79bfe632aa8bbe92b8", method: .post, parameters: params, encoding: URLEncoding(destination: .queryString))
     
     request.responseDecodable(of: Token.self){ (response) in
-        
-        
         switch response.result {
         case .success(let responseData):
             if response.value?.statusMessage != nil {
                 failure(responseData.statusMessage!)
             } else{
+                Session.shared.saveUserCredentials(userName: user.userName ,password: user.password)
                 success(responseData)
             }
             

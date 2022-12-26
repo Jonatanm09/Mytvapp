@@ -23,6 +23,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         loginBtn.tintColor = UIColor.orange
         setButtonEnable(isEnable: false)
         getRequestToken()
+        let credentials = Session.shared.getUserCredentials()
+        
+        if credentials.1 != nil {
+            self.performSegue(withIdentifier: self.tvShowSegue, sender: self)
+            
+        }
         super.viewDidLoad()
     }
     
@@ -31,11 +37,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.indicatorLogin.startAnimating()
         
         if !userTexfield.text!.isEmpty  && !userPasswordField.text!.isEmpty && !userTexfield.text!.hasPrefix(" ") && !userTexfield.text!.hasSuffix(" ")  {
-            user?.userName = userTexfield.text!
-            user?.password = userPasswordField.text!
+            user =  User(userName: userTexfield.text!, password: userPasswordField.text!, token: "")
             self.setButtonEnable(isEnable: false)
             
-            login(userName: userTexfield.text!, password: userPasswordField.text!) { User in
+            login(user: user!) { User in
                 self.performSegue(withIdentifier: self.tvShowSegue, sender: self)
                 self.userTexfield.text = ""
                 self.userPasswordField.text = ""

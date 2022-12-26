@@ -27,7 +27,6 @@ class TvShowDetailsViewController: UIViewController {
         self.showDetailCollectionView.dataSource = self
         getTvshows(showId: programId)
         getCast(showID: programId)
-        
         super.viewDidLoad()
     }
     

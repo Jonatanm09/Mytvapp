@@ -32,7 +32,6 @@ class TvShowsCollectionViewController: UIViewController, UITextFieldDelegate, UI
         newBackButton.tintColor = UIColor.white
         newBackButton.image = UIImage(named: "arrowshape.turn.up.left")
         self.navigationItem.leftBarButtonItem = newBackButton
-        // Do any additional setup after loading the view.
     }
     
     func getTvshows(category: String) {
@@ -81,6 +80,7 @@ class TvShowsCollectionViewController: UIViewController, UITextFieldDelegate, UI
     
     @objc func back(sender: UIBarButtonItem) {
         showSimpleAlert(controller: self) {(_: UIAlertAction!) in
+            Session.shared.dispose()
             self.navigationController?.popViewController(animated: true)
         }
     }

@@ -5,7 +5,7 @@
 //  Created by Jonatan Mendez on 20/12/22.
 //
 
-struct User: Decodable {
+struct User: Codable {
     var userName: String
     var password: String
     var token: String
