@@ -5,7 +5,7 @@
 //  Created by Jonatan Mendez on 25/12/22.
 //
 
-struct Creators: Decodable {
+struct Creators: Codable {
     let id: Int?
     let name: String?
     let photo: String?

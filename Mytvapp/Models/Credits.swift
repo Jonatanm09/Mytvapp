@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Credits: Decodable {
+struct Credits: Codable {
     let name: String?
     let characterName: String?
     let profilePhoto: String?

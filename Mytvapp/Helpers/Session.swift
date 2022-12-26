@@ -27,19 +27,53 @@ class Session {
         return false
     }
     
-    func getUser() -> User? {
-        let decoder = JSONDecoder()
-        guard let user = UserDefaults.standard.value(forKey: "user") else {
-            return (nil)
-        }
-        let decodedUser = try! decoder.decode(User.self, from: (user as? Data)! )
-        return (decodedUser as User)
+    func saveShows(shows:[Show]){
+        let encoder = JSONEncoder()
+        let data = try! encoder.encode(shows)
+        UserDefaults.standard.set(data, forKey: "shows")
     }
     
-    func saveUser(user: User){
+    func getShows() -> ([Show])?{
+        let decoder = JSONDecoder()
+        guard let shows = UserDefaults.standard.value(forKey: "shows") else {
+            return (nil)
+        }
+        let decodedShows = try! decoder.decode([Show].self, from: (shows as? Data)! )
+        return (decodedShows as [Show])
+    }
+    
+    func saveCast(cast:[Credits]){
         let encoder = JSONEncoder()
-        let data = try! encoder.encode(user)
-        UserDefaults.standard.set(data, forKey: "user")
+        let data = try! encoder.encode(cast)
+        UserDefaults.standard.set(data, forKey: "cast")
+    }
+    
+    func getCast() -> ([Credits])?{
+        let decoder = JSONDecoder()
+        guard let shows = UserDefaults.standard.value(forKey: "cast") else {
+            return (nil)
+        }
+        let decodedShows = try! decoder.decode([Credits].self, from: (shows as? Data)! )
+        return (decodedShows as [Credits])
+    }
+    
+    
+    func saveShowDetail(showDetail:ShowDetail){
+        var showsSaved : [ShowDetail] = []
+        
+        showsSaved.append(showDetail)
+        let encoder = JSONEncoder()
+        let data = try! encoder.encode(showsSaved)
+        UserDefaults.standard.set(data, forKey: "showDetail")
+    }
+    
+    func getShowDetail() -> ([ShowDetail])?{
+        let decoder = JSONDecoder()
+        guard let showDetail = UserDefaults.standard.value(forKey: "showDetail") else {
+            return (nil)
+        }
+        let decodedShowDetail = try! decoder.decode([ShowDetail].self, from: (showDetail as? Data)! )
+        return (decodedShowDetail as [ShowDetail])
     }
     
     
@@ -68,6 +102,10 @@ class Session {
         UserDefaults.standard.removeObject(forKey: "password")
         UserDefaults.standard.removeObject(forKey: "token")
         UserDefaults.standard.removeObject(forKey: "expires")
+        UserDefaults.standard.removeObject(forKey: "showDetail")
+        UserDefaults.standard.removeObject(forKey: "shows")
+        UserDefaults.standard.removeObject(forKey: "cast")
+
     }
 }
 

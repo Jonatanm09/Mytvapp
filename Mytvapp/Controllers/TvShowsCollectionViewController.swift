@@ -17,10 +17,16 @@ class TvShowsCollectionViewController: UIViewController, UITextFieldDelegate, UI
     
     var listCategorysText = ["Populares", "Mejor calificadas", "Al aire hoy", "en Tv"]
     var listCategoryKeys = [ "popular", "top_rated", "airing_today", "on_the_air" ]
-    var movies: [Show]!
+    var movies: [Show] = []
+    var filteredMovies: [Show] = []
     
     override func viewDidLoad() {
-        getTvshows(category: listCategoryKeys.first!)
+        if Session.shared.getShows() != nil {
+            self.movies = Session.shared.getShows()!
+            self.filteredMovies = movies
+        }else{
+            getTvshows(category: listCategoryKeys.first!)
+        }
         self.filterTextField.text = listCategorysText.first
         super.viewDidLoad()
         customCollectionView.delegate = self
@@ -28,15 +34,18 @@ class TvShowsCollectionViewController: UIViewController, UITextFieldDelegate, UI
         self.pickerView.isHidden = true
         
         self.navigationItem.hidesBackButton = true
-        let newBackButton = UIBarButtonItem(title: "log Out", style: .plain, target: self, action: #selector(back(sender:)))
+        let newBackButton = UIBarButtonItem(title: "Cerrar Sesión", style: .plain, target: self, action: #selector(back(sender:)))
         newBackButton.tintColor = UIColor.white
         newBackButton.image = UIImage(named: "arrowshape.turn.up.left")
         self.navigationItem.leftBarButtonItem = newBackButton
     }
     
     func getTvshows(category: String) {
+        
         getMoviesRequest(withMovieCategory: category) { Movies in
             self.movies = Movies.all
+            self.filteredMovies = self.movies
+            Session.shared.saveShows(shows: self.filteredMovies)
             self.customCollectionView.reloadData()
         } failure: { Error in
             displayAlert(withTitle: "Error", message: "Hubo un error inesperado", controller: self)
@@ -92,11 +101,13 @@ class TvShowsCollectionViewController: UIViewController, UITextFieldDelegate, UI
 
 extension TvShowsCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.movies?.count ?? 0    }
+        return self.filteredMovies.count
+        
+    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath as IndexPath) as! CustomTvShowCollectionViewCell
-        let show = movies[indexPath.row]
+        let show = self.filteredMovies[indexPath.row]
         getImages(imageUrlPath: show.photo, imgType: ImgTypes.medium) { img in
             cell.imgView.image = img
         }

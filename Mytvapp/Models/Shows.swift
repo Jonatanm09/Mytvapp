@@ -5,7 +5,7 @@
 //  Created by Jonatan Mendez on 21/12/22.
 //
 
-struct Shows: Decodable {
+struct Shows: Codable {
   let page: Int
   let all: [Show]
   

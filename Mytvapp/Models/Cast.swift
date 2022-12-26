@@ -5,7 +5,7 @@
 //  Created by Jonatan Mendez on 25/12/22.
 //
 
-struct Cast: Decodable {
+struct Cast: Codable {
  let cast: [Credits]
  
  enum CodingKeys: String, CodingKey {

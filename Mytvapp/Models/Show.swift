@@ -6,13 +6,14 @@
 //
 
 
-struct Show: Decodable {
-    let id: Int
-    let title: String
-    let releaseDate: String
-    let calification: Float
-    let photo : String
-    let description : String
+struct Show: Codable {
+    var id: Int
+    var title: String
+    var releaseDate: String
+    var calification: Float
+    var photo : String
+    var description : String
+    var category: String?
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -21,5 +22,6 @@ struct Show: Decodable {
         case calification = "vote_average"
         case photo =  "poster_path"
         case description = "overview"
+        case category = ""
     }
 }

@@ -22,7 +22,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         loginBtn.setTitle("Iniciar Sesión", for: .normal)
         loginBtn.tintColor = UIColor.orange
         setButtonEnable(isEnable: false)
-        getRequestToken()
         let credentials = Session.shared.getUserCredentials()
         
         if credentials.1 != nil {
@@ -39,17 +38,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if !userTexfield.text!.isEmpty  && !userPasswordField.text!.isEmpty && !userTexfield.text!.hasPrefix(" ") && !userTexfield.text!.hasSuffix(" ")  {
             user =  User(userName: userTexfield.text!, password: userPasswordField.text!, token: "")
             self.setButtonEnable(isEnable: false)
-            
-            login(user: user!) { User in
-                self.performSegue(withIdentifier: self.tvShowSegue, sender: self)
-                self.userTexfield.text = ""
-                self.userPasswordField.text = ""
-                self.indicatorLogin.stopAnimating()
+            getRequestToken { string in
+                login(user: self.user!, token: string) { User in
+                    self.performSegue(withIdentifier: self.tvShowSegue, sender: self)
+                    self.userTexfield.text = ""
+                    self.userPasswordField.text = ""
+                    self.indicatorLogin.stopAnimating()
+                } failure: { error in
+                    displayAlert(withTitle: "Error", message: error, controller: self)
+                    self.indicatorLogin.stopAnimating()
+                    self.setButtonEnable(isEnable: true)
+                }
             } failure: { error in
                 displayAlert(withTitle: "Error", message: error, controller: self)
-                self.indicatorLogin.stopAnimating()
-                self.setButtonEnable(isEnable: true)
             }
+
         } else {
             displayAlert(withTitle: "Error", message: "El usuario o contraseña no pueden tener espacios en blancos o estar vacios", controller: self)
             self.indicatorLogin.stopAnimating()

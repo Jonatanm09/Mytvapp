@@ -5,7 +5,7 @@
 //  Created by Jonatan Mendez on 25/12/22.
 //
 
-struct Episodes: Decodable {
+struct Episodes: Codable {
     
     let seasonNumber: Int?
     let episodseCount: Int?

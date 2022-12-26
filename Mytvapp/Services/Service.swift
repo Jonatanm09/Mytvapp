@@ -57,6 +57,7 @@ func getCredits(withId tvId: Int, success:@escaping (Cast) -> Void, failure:@esc
     request.responseDecodable(of: Cast.self){ (response) in
         if response.error == nil {
             success(response.value!)
+            Session.shared.saveCast(cast: response.value!.cast)
         }
         if response.error != nil{
             let error : Error = response.error!
@@ -69,29 +70,27 @@ func getCredits(withId tvId: Int, success:@escaping (Cast) -> Void, failure:@esc
     }
 }
 
-func getRequestToken() {
+func getRequestToken(success:@escaping (String) -> Void, failure: @escaping(String) -> Void) {
     let request = AF.request("https://api.themoviedb.org/3/authentication/token/new", method: .get, parameters: queryParams)
     request.responseDecodable(of: Token.self){ (response) in
         if response.error == nil {
+            success(response.value!.token!)
             Session.shared.saveToken(token:  response.value!.token!, expires: response.value!.expires!)
         }
         if response.error != nil{
-            let error : Error = response.error!
-            _ = ["NSLocalizedDescription" : error.localizedDescription]
-            
-            debugPrint(error)
+            failure("No se pudo conseguir el token, intentelo mas tarde")
         }
         
     }
     
 }
 
-func login(user: User, success:@escaping (Token) -> Void, failure:@escaping (String) -> Void) {
+func login(user: User, token: String, success:@escaping (Token) -> Void, failure:@escaping (String) -> Void) {
     
     let params = [
         "username": user.userName,
         "password": user.password,
-        "request_token": Session.shared.getToken().0!,
+        "request_token": token,
     ]
     
     

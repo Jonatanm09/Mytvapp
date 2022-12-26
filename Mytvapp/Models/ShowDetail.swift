@@ -5,7 +5,7 @@
 //  Created by Jonatan Mendez on 23/12/22.
 //
 
-struct ShowDetail: Decodable {
+struct ShowDetail: Codable {
     let id: Int?
     let creators: [Creators]?
     let name: String?
@@ -13,6 +13,7 @@ struct ShowDetail: Decodable {
     let photo : String?
     let seasons: [Episodes]?
     let airDate : String?
+    var cast: [Credits]?
 
     enum CodingKeys: String, CodingKey {
         case id = "id"

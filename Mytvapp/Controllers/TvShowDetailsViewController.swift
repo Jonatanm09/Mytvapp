@@ -23,9 +23,23 @@ class TvShowDetailsViewController: UIViewController {
     @IBOutlet weak var epsoidesLbk: UILabel!
     
     override func viewDidLoad() {
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         self.showDetailCollectionView.delegate = self
         self.showDetailCollectionView.dataSource = self
-        getTvshows(showId: programId)
+        if Session.shared.getShowDetail() != nil {
+            let showFound = Session.shared.getShowDetail()!.first(where: { show in
+                show.id == programId
+            })
+            if showFound != nil {
+                self.showDetail = showFound!
+                self.setValues(show: self.showDetail)
+            }else{
+                getTvshows(showId: programId)
+            }
+        }else{
+            getTvshows(showId: programId)
+            
+        }
         getCast(showID: programId)
         super.viewDidLoad()
     }
@@ -44,13 +58,12 @@ class TvShowDetailsViewController: UIViewController {
             self.showDetailCollectionView.reloadData()
         } failure: { _ in
         }
-        
-        
     }
     
     func getTvshows(showId: Int) {
         getShowsDetailsRequest(withId: showId, success: { shows in
             self.showDetail = shows
+            Session.shared.saveShowDetail(showDetail: self.showDetail)
             self.setValues(show: self.showDetail)
         }, failure: { error in
             print("")
@@ -71,7 +84,7 @@ class TvShowDetailsViewController: UIViewController {
     func creatorString(creator: [Creators]) -> String {
         var creatorString = ""
         for creatorName in creator {
-           creatorString +=   " • " + creatorName.name!
+            creatorString +=   " • " + creatorName.name!
         }
         return "Creadores: " + creatorString.suffix(creatorString.count - 2 )
     }
