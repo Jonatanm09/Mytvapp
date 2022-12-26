@@ -11,6 +11,8 @@ class TvShowDetailsViewController: UIViewController {
     
     let cellIdentifier = "showDetailCell"
     var programId = 0
+    var showDetail: ShowDetail!
+    var castArray: [Credits]!
     
     @IBOutlet weak var postImgView: UIImageView!
     @IBOutlet weak var showDetailCollectionView: UICollectionView!
@@ -23,29 +25,66 @@ class TvShowDetailsViewController: UIViewController {
     override func viewDidLoad() {
         self.showDetailCollectionView.delegate = self
         self.showDetailCollectionView.dataSource = self
-        setPostImg(imgUrl: "/iHSwvRVsRyxpX7FE7GbviaDvgGZ.jpg")
+        getTvshows(showId: programId)
+        getCast(showID: programId)
+        
         super.viewDidLoad()
     }
     
     
-    func setPostImg(imgUrl: String) {
-        getImages(imageUrlPath: "") { img in
+    func setPostImg(imgUrl: String, imgType: ImgTypes) {
+        getImages(imageUrlPath: imgUrl, imgType: imgType) { img in
             self.postImgView.image = img
             self.view.layoutSubviews()
         }
     }
+    
+    func getCast(showID: Int){
+        getCredits(withId: showID) { cast in
+            self.castArray = cast.cast
+            self.showDetailCollectionView.reloadData()
+        } failure: { error in
+            print("")
+        }
+        
+        
+    }
+    
+    func getTvshows(showId: Int) {
+        getShowsDetailsRequest(withId: showId, success: { shows in
+            self.showDetail = shows
+            self.setValues(show: self.showDetail)
+        }, failure: { error in
+            print("")
+        })
+    }
+    
+    func setValues (show: ShowDetail){
+        setPostImg(imgUrl: show.photo!, imgType: ImgTypes.large)
+        showLbl.text = show.name
+        showDetailLbl.text = show.overview
+        seasonLbl.text = "Temporada: \(show.seasons!.last!.seasonNumber!)"
+        let subString = show.airDate!.prefix(4)
+        epsoidesLbk.text = subString + " | \(show.seasons!.last!.episodseCount!) episodios"
+    }
+    
 }
 
 extension TvShowDetailsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return self.castArray?.count ?? 0
         
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath as IndexPath) as! CustomTvShowDetailsCollectionViewCell
-        
-        cell.setDataValues(castName: "Tom Ellis", castSubtitle: "Lucifer Morningstar", img: UIImage(imageLiteralResourceName: "loki"))
+        let cast =  castArray[indexPath.row]
+        if cast != nil {
+            getImages(imageUrlPath: cast.profilePhoto!, imgType: ImgTypes.small) { img in
+                cell.castImgView.image = img
+            }
+        }
+        cell.setDataValues(castName: cast.name!, castSubtitle: cast.characterName!)
         return cell
     }
     

@@ -32,6 +32,43 @@ func getMoviesRequest(withMovieCategory category: String, success:@escaping (Sho
     }
 }
 
+func getShowsDetailsRequest(withId showId: Int, success:@escaping (ShowDetail) -> Void, failure:@escaping (Error) -> Void){
+    let movieUrl = baseMoviesUrl + "/\(showId)"
+    let request = AF.request(movieUrl, method: .get, parameters: queryParams)
+    
+    request.responseDecodable(of: ShowDetail.self){ (response) in
+        if response.error == nil {
+            success(response.value!)
+        }
+        if response.error != nil{
+            let error : Error = response.error!
+            _ = ["NSLocalizedDescription" : error.localizedDescription]
+            debugPrint(response)
+            failure(error)
+        }
+        
+    }
+}
+
+func getCredits(withId tvId: Int, success:@escaping (Cast) -> Void, failure:@escaping (Error) -> Void){
+    let movieUrl = baseMoviesUrl + "/\(tvId)/credits"
+    let request = AF.request(movieUrl, method: .get, parameters: queryParams)
+    
+    request.responseDecodable(of: Cast.self){ (response) in
+        if response.error == nil {
+            success(response.value!)
+        }
+        if response.error != nil{
+            let error : Error = response.error!
+            _ = ["NSLocalizedDescription" : error.localizedDescription]
+            debugPrint(response)
+            failure(error)
+        }
+        
+        
+    }
+}
+
 func getRequestToken() {
     let request = AF.request("https://api.themoviedb.org/3/authentication/token/new", method: .get, parameters: queryParams)
     request.responseDecodable(of: Token.self){ (response) in
@@ -61,11 +98,18 @@ func login(userName: String, password: String, success:@escaping (Token) -> Void
     let request = AF.request("https://api.themoviedb.org/3/authentication/token/validate_with_login?api_key=e0ce189acf3d2d79bfe632aa8bbe92b8", method: .post, parameters: params, encoding: URLEncoding(destination: .queryString))
     
     request.responseDecodable(of: Token.self){ (response) in
-        if response.value?.statusMessage == nil {
-            success(response.value!)
-        }
-        else{
-            failure((response.value?.statusMessage)!!)
+        
+        
+        switch response.result {
+        case .success(let responseData):
+            if response.value?.statusMessage != nil {
+                failure(responseData.statusMessage!)
+            } else{
+                success(responseData)
+            }
+            
+        case .failure(let error):
+            failure(error.localizedDescription)
         }
     }
     

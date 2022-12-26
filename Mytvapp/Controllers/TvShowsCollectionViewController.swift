@@ -42,7 +42,6 @@ class TvShowsCollectionViewController: UIViewController, UITextFieldDelegate, UI
         } failure: { Error in
             displayAlert(withTitle: "Error", message: "Hubo un error inesperado", controller: self)
         }
-        
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -98,7 +97,7 @@ extension TvShowsCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath as IndexPath) as! CustomTvShowCollectionViewCell
         let show = movies[indexPath.row]
-        getImages(imageUrlPath: show.photo) { img in
+        getImages(imageUrlPath: show.photo, imgType: ImgTypes.medium) { img in
             cell.imgView.image = img
         }
         cell.setLabel(title: show.title, date: show.releaseDate, porcentage: "\(show.calification)")

@@ -13,8 +13,7 @@ class CustomTvShowDetailsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var castSubtitleLbl: UILabel!
     @IBOutlet weak var castNameLbl: UILabel!
     
-    func setDataValues(castName: String, castSubtitle: String, img: UIImage) {
-        castImgView.image = img
+    func setDataValues(castName: String, castSubtitle: String) {
         castNameLbl.text = castName
         castSubtitleLbl.text = castSubtitle
     }
