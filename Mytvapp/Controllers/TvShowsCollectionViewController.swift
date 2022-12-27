@@ -27,7 +27,6 @@ class TvShowsCollectionViewController: UIViewController, UITextFieldDelegate, UI
         }else{
             getTvshows(category: listCategoryKeys.first!)
         }
-        // print("\(Session.shared.getToken().1!.convertToDate())")
         self.filterTextField.text = listCategorysText.first
         super.viewDidLoad()
         customCollectionView.delegate = self

@@ -43,7 +43,6 @@ func getShowsDetailsRequest(withId showId: Int, success:@escaping (ShowDetail) -
         if response.error != nil{
             let error : Error = response.error!
             _ = ["NSLocalizedDescription" : error.localizedDescription]
-            debugPrint(response)
             failure(error)
         }
         
@@ -62,7 +61,6 @@ func getCredits(withId tvId: Int, success:@escaping (Cast) -> Void, failure:@esc
         if response.error != nil{
             let error : Error = response.error!
             _ = ["NSLocalizedDescription" : error.localizedDescription]
-            debugPrint(response)
             failure(error)
         }
         

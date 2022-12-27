@@ -66,7 +66,6 @@ class TvShowDetailsViewController: UIViewController {
             Session.shared.saveShowDetail(showDetail: self.showDetail)
             self.setValues(show: self.showDetail)
         }, failure: { error in
-            print("")
         })
     }
     
