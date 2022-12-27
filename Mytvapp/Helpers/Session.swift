@@ -12,13 +12,10 @@ class Session {
     static let  shared: Session = Session()
     private init(){}
     
-    var user: User? = nil
-    
     func saveUserCredentials(userName: String, password: String) {
         UserDefaults.standard.set(userName, forKey: "username")
         UserDefaults.standard.set(password, forKey: "password")
     }
-    
     func userHasSavedCredentials() -> Bool {
         let credentials = self.getUserCredentials()
         if credentials.1 != nil {
@@ -97,7 +94,6 @@ class Session {
     }
     
     func dispose() {
-        self.user = nil
         UserDefaults.standard.removeObject(forKey: "username")
         UserDefaults.standard.removeObject(forKey: "password")
         UserDefaults.standard.removeObject(forKey: "token")

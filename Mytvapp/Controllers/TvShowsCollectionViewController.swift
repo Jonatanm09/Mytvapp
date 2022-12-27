@@ -19,7 +19,7 @@ class TvShowsCollectionViewController: UIViewController, UITextFieldDelegate, UI
     var listCategoryKeys = [ "popular", "top_rated", "airing_today", "on_the_air" ]
     var movies: [Show] = []
     var filteredMovies: [Show] = []
-    
+
     override func viewDidLoad() {
         if Session.shared.getShows() != nil {
             self.movies = Session.shared.getShows()!
@@ -27,6 +27,7 @@ class TvShowsCollectionViewController: UIViewController, UITextFieldDelegate, UI
         }else{
             getTvshows(category: listCategoryKeys.first!)
         }
+        // print("\(Session.shared.getToken().1!.convertToDate())")
         self.filterTextField.text = listCategorysText.first
         super.viewDidLoad()
         customCollectionView.delegate = self
