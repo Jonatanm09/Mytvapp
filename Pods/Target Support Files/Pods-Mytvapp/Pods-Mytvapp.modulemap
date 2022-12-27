@@ -1,0 +1,6 @@
+framework module Pods_Mytvapp {
+  umbrella header "Pods-Mytvapp-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module Pods_Mytvapp_MytvappUITests {
+  umbrella header "Pods-Mytvapp-MytvappUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
