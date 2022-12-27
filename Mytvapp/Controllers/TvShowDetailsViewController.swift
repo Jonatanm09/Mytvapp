@@ -53,20 +53,28 @@ class TvShowDetailsViewController: UIViewController {
     }
     
     func getCast(showID: Int){
-        getCredits(withId: showID) { cast in
-            self.castArray = cast.cast
-            self.showDetailCollectionView.reloadData()
-        } failure: { _ in
+        if Connectivity.isConnectedToInternet{
+            getCredits(withId: showID) { cast in
+                self.castArray = cast.cast
+                self.showDetailCollectionView.reloadData()
+            } failure: { _ in
+            }
+        } else{
+            displayAlert(withTitle: "No hay conexion", message: "Debe estar conectado al internet", controller: self)
         }
     }
     
     func getTvshows(showId: Int) {
-        getShowsDetailsRequest(withId: showId, success: { shows in
-            self.showDetail = shows
-            Session.shared.saveShowDetail(showDetail: self.showDetail)
-            self.setValues(show: self.showDetail)
-        }, failure: { error in
-        })
+        if Connectivity.isConnectedToInternet{
+            getShowsDetailsRequest(withId: showId, success: { shows in
+                self.showDetail = shows
+                Session.shared.saveShowDetail(showDetail: self.showDetail)
+                self.setValues(show: self.showDetail)
+            }, failure: { error in
+            })
+        }else{
+            displayAlert(withTitle: "No hay conexion", message: "Debe estar conectado al internet", controller: self)
+        }
     }
     
     func setValues (show: ShowDetail){

@@ -34,32 +34,37 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func loginBtnPressed(_ sender: Any) {
         self.indicatorLogin.startAnimating()
-        
-        if !userTexfield.text!.isEmpty  && !userPasswordField.text!.isEmpty && !userTexfield.text!.hasPrefix(" ") && !userTexfield.text!.hasSuffix(" ")  {
-            user =  User(userName: userTexfield.text!, password: userPasswordField.text!, token: "")
-            self.setButtonEnable(isEnable: false)
-            getRequestToken { string in
-                login(user: self.user!, token: string) { User in
-                    self.performSegue(withIdentifier: self.tvShowSegue, sender: self)
-                    self.userTexfield.text = ""
-                    self.userPasswordField.text = ""
-                    self.indicatorLogin.stopAnimating()
+        if Connectivity.isConnectedToInternet{
+            
+            if !userTexfield.text!.isEmpty  && !userPasswordField.text!.isEmpty && !userTexfield.text!.hasPrefix(" ") && !userTexfield.text!.hasSuffix(" ")  {
+                user =  User(userName: userTexfield.text!, password: userPasswordField.text!, token: "")
+                self.setButtonEnable(isEnable: false)
+                getRequestToken { string in
+                    login(user: self.user!, token: string) { User in
+                        self.performSegue(withIdentifier: self.tvShowSegue, sender: self)
+                        self.userTexfield.text = ""
+                        self.userPasswordField.text = ""
+                        self.indicatorLogin.stopAnimating()
+                    } failure: { error in
+                        displayAlert(withTitle: "Error", message: error, controller: self)
+                        self.indicatorLogin.stopAnimating()
+                        self.setButtonEnable(isEnable: true)
+                    }
                 } failure: { error in
                     displayAlert(withTitle: "Error", message: error, controller: self)
-                    self.indicatorLogin.stopAnimating()
-                    self.setButtonEnable(isEnable: true)
                 }
-            } failure: { error in
-                displayAlert(withTitle: "Error", message: error, controller: self)
+                
+            } else {
+                displayAlert(withTitle: "Error", message: "El usuario o contraseña no pueden tener espacios en blancos o estar vacios", controller: self)
+                self.indicatorLogin.stopAnimating()
+                setButtonEnable(isEnable: true)
             }
-
-        } else {
-            displayAlert(withTitle: "Error", message: "El usuario o contraseña no pueden tener espacios en blancos o estar vacios", controller: self)
-            self.indicatorLogin.stopAnimating()
-            setButtonEnable(isEnable: true)
+            
+        } else{
+            displayAlert(withTitle: "No hay conexion", message: "Debe estar conectado al internet", controller: self)
         }
-        
     }
+
     
     func setButtonEnable(isEnable: Bool) {
         loginBtn.isEnabled = isEnable

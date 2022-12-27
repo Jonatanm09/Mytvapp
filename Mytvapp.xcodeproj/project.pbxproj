@@ -36,6 +36,7 @@
 		D48261E92953688600F9DFAA /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48261E82953688600F9DFAA /* Service.swift */; };
 		D48261EB29536FA600F9DFAA /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48261EA29536FA600F9DFAA /* Show.swift */; };
 		D48261ED2953710300F9DFAA /* Shows.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48261EC2953710300F9DFAA /* Shows.swift */; };
+		D4D3430C295A942600283887 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D3430B295A942600283887 /* Connectivity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		D48261E82953688600F9DFAA /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		D48261EA29536FA600F9DFAA /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
 		D48261EC2953710300F9DFAA /* Shows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shows.swift; sourceTree = "<group>"; };
+		D4D3430B295A942600283887 /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +237,7 @@
 				D45F49262959045900D4B4AF /* Episodes.swift */,
 				D45F4928295934C500D4B4AF /* Credits.swift */,
 				D45F492A2959358300D4B4AF /* Cast.swift */,
+				D4D3430B295A942600283887 /* Connectivity.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -533,6 +536,7 @@
 				D48261B029520CB600F9DFAA /* SceneDelegate.swift in Sources */,
 				D45F491C29568BEA00D4B4AF /* ShowDetail.swift in Sources */,
 				D45F49242959018000D4B4AF /* Creators.swift in Sources */,
+				D4D3430C295A942600283887 /* Connectivity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

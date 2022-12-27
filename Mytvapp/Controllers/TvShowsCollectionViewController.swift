@@ -41,14 +41,17 @@ class TvShowsCollectionViewController: UIViewController, UITextFieldDelegate, UI
     }
     
     func getTvshows(category: String) {
-        
-        getMoviesRequest(withMovieCategory: category) { Movies in
-            self.movies = Movies.all
-            self.filteredMovies = self.movies
-            Session.shared.saveShows(shows: self.filteredMovies)
-            self.customCollectionView.reloadData()
-        } failure: { Error in
-            displayAlert(withTitle: "Error", message: "Hubo un error inesperado", controller: self)
+        if Connectivity.isConnectedToInternet{
+            getMoviesRequest(withMovieCategory: category) { Movies in
+                self.movies = Movies.all
+                self.filteredMovies = self.movies
+                Session.shared.saveShows(shows: self.filteredMovies)
+                self.customCollectionView.reloadData()
+            } failure: { Error in
+                displayAlert(withTitle: "Error", message: "Hubo un error inesperado", controller: self)
+            }
+        }else{
+            displayAlert(withTitle: "No hay conexion", message: "Debe estar conectado al internet", controller: self)
         }
     }
     
